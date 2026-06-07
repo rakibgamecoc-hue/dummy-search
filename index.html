@@ -40,6 +40,27 @@
         <a href="#" class="footer_t&c">Terms &  Conditions</a>
         <p class="copyright_text">Aalo search all right reserved @2026</p>
     </footer>
+
+    <script>
+      const searchForm = document.querySelector('.search_form');
+      const searchInput = document.querySelector('.search_box');
+
+      searchForm.addEventListener('submit', function(event) {
+        const query = searchInput.value.trim();
+        if (!query) {
+          event.preventDefault();
+          return;
+        }
+
+        const params = new URLSearchParams({ q: query });
+        if (event.submitter && event.submitter.classList.contains('feel_lucky_button')) {
+          params.append('btnI', 'I');
+        }
+
+        window.location.href = `https://www.google.com/search?${params.toString()}`;
+        event.preventDefault();
+      });
+    </script>
 </body>
 
 </html>
